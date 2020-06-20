@@ -4,4 +4,5 @@
 
     $client = new \PayPalWrapper\PayPalClient();
 
+    echo $client->SendConfig();
 ?>
