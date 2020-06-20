@@ -19,10 +19,19 @@
     	}
     }
 
+    class PayPalItem
+    {
+        private $name;
+        private $quantity;
+        private $amount;
+
+    }
+
     class PayPalClient
     {
     	private $config;
         private $context;
+        private $currency;
 
     	function __construct()
     	{
