@@ -25,6 +25,12 @@
         private $quantity;
         private $amount;
 
+        function __construct($itemName, $itemQuantity, $itemAmount)
+        {
+            $this->name = $itemName;
+            $this->quantity = $itemQuantity;
+            $this->amount = $itemAmount;
+        }
     }
 
     class PayPalClient
@@ -66,7 +72,7 @@
 
     class Order
     {
-        function Order()
+        function __construct()
         {
 
         }
