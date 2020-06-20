@@ -22,11 +22,18 @@
     class PayPalClient
     {
     	private $config;
+        private $context;
 
     	function __construct()
     	{
     		$temp_config = new PayPalConfig();
-    		$this->config = $temp_config->returnConfig();
+            $this->config = $temp_config->returnConfig();
+            $this->context = new \PayPal\Rest\ApiContext(
+                new \PayPal\Auth\OAuthTokenCredential(
+                    $this->config->clientid,
+                    $this->config->clientsecret
+                )
+            );
     	}
 
         function CreateOrder()
