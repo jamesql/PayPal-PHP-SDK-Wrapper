@@ -19,20 +19,6 @@
     	}
     }
 
-    class PayPalItem
-    {
-        private $name;
-        private $quantity;
-        private $amount;
-
-        function __construct($itemName, $itemQuantity, $itemAmount)
-        {
-            $this->name = $itemName;
-            $this->quantity = $itemQuantity;
-            $this->amount = $itemAmount;
-        }
-    }
-
     class PayPalClient
     {
     	private $config;
@@ -68,6 +54,20 @@
             return $this->config;
         }
 
+    }
+
+    class PayPalItem
+    {
+        private $name;
+        private $quantity;
+        private $amount;
+
+        function __construct($itemName, $itemQuantity, $itemAmount)
+        {
+            $this->name = $itemName;
+            $this->quantity = $itemQuantity;
+            $this->amount = $itemAmount;
+        }
     }
 
     class Order
