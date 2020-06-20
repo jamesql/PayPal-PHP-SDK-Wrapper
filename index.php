@@ -5,12 +5,12 @@
     $client = new \PayPalWrapper\PayPalClient();
     $config = $client->SendConfig();
 
-    echo $config;
+    echo $config->clientid;
 
         function console_log( $data ){
         echo '<script>';
         echo 'console.log('. json_encode( $data ) .')';
         echo '</script>';
       }
-      console_log($client->SendConfig());
+      console_log($client->SendConfig()->clientid);
 ?>

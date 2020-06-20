@@ -10,7 +10,7 @@
     	function __construct()
     	{
     		$config_file = file_get_contents(__DIR__ . '\config.json');
-    		$this->config = json_decode($config_file, true);
+    		$this->config = json_decode($config_file);
     	}
 
     	function returnConfig()
