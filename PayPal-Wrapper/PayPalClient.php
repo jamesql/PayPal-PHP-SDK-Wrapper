@@ -72,6 +72,8 @@
 
     class Order
     {
+        private $cart;
+        
         function __construct()
         {
 
