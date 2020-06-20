@@ -37,7 +37,7 @@
             );
     	}
 
-        function CreateOrder()
+        function CreateOrder($arrayOfItems)
         {
             $this_order = new Order();
 
@@ -73,10 +73,10 @@
     class Order
     {
         private $cart;
-        
-        function __construct()
-        {
 
+        function __construct($arrayOfItems)
+        {
+            $this->cart = $arrayOfItems;
         }
     }
 
