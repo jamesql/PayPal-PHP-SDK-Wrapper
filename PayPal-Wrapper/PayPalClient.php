@@ -121,9 +121,14 @@
         public $payment;
         public $transaction;
         public $itemsamount;
+        private $config;
 
         function __construct($arrayOfItems)
         {
+            // Config
+            $temp_config = new PayPalConfig();
+            $this->config = $temp_config->returnConfig();
+
             $this->payer = new Payer();
             $this->itemlist = new ItemList();
             $this->details = new Details();
@@ -148,7 +153,7 @@
                 $this->itemsamount += $thisitem->total;
                 $itemobj = new Item();
                 $itemobj->setName($thisitem->name)
-                        ->setCurrency($glbconfig->currency)
+                        ->setCurrency($this->config->currency)
                         ->setQuantity($thisitem->quantity)
                         ->setPrice($thisitem->amount);
 
@@ -158,7 +163,7 @@
             // Use meta data to fill out rest of the order information - todo: add tax
             $this->details->setTax('0.00')
                           ->setSubtotal(strval($this->itemsamount));
-            $this->amount->setCurrency($glbconfig->currency)
+            $this->amount->setCurrency($this->config->currency)
                          ->setTotal(strval($this->itemsamount))
                          ->setDetails($this->details);
 
