@@ -2,15 +2,12 @@
     namespace Demo;
     require 'PayPal-Wrapper\PayPalClient.php';
 
+    // Create a PayPal 'client'
     $client = new \PayPalWrapper\PayPalClient();
-    $config = $client->SendConfig();
 
-    echo $config->clientid;
-
-        function console_log( $data ){
-        echo '<script>';
-        echo 'console.log('. json_encode( $data ) .')';
-        echo '</script>';
-      }
-      console_log($client->SendConfig()->clientid);
+    // Create a order for a Apple ($5) x 3 (Name, Quantity, Price)
+    $order = $client->CreateOrder(array(new \PayPalWrapper\PayPalItem("Apple", 3, 5)));
+    
+    // Send the order to user, true is to automatically redirect, this function returns the url to send the user to.
+    $redirecturl = $client->SendOrder($order, true);
 ?>
