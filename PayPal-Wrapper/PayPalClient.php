@@ -155,12 +155,17 @@
                 $this->itemlist->addItem($itemobj);
             }
 
-            // Use meta data to fill out rest of the order information
+            // Use meta data to fill out rest of the order information - todo: add tax
             $this->details->setTax('0.00')
                           ->setSubtotal(strval($this->itemsamount));
             $this->amount->setCurrency($glbconfig->currency)
                          ->setTotal(strval($this->itemsamount))
                          ->setDetails($this->details);
+
+            $this->transaction->setAmount($this->amount)
+                              ->setDescription("DESCRIPTION")
+                              ->setInvoiceNumber(uniqid());
+            $this->payment->setTransactions(array($this->transaction));
         }
     }
 
