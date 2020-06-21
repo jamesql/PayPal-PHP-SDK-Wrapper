@@ -56,9 +56,15 @@
             return $this_order;
         }
 
-        function SendOrder(Order $ord)
+        function SendOrder(Order $ord, $redirect=false)
         {
+            $ord->payment->create($this->context);
+            $approval = $ord->payment->getApprovalUrl();
 
+            if ($redirect)
+                header("Location: " . $approval);
+
+            return $approval;
         }
 
         function SendConfig()
@@ -106,13 +112,13 @@
 
     class Order
     {
-        private $cart;
-        private $payer;
-        private $red;
-        private $itemlist;
-        private $details;
-        private $amount;
-        private $payment;
+        public $cart;
+        public $payer;
+        public $red;
+        public $itemlist;
+        public $details;
+        public $amount;
+        public $payment;
 
         function __construct($arrayOfItems)
         {
