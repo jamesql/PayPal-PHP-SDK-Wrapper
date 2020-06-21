@@ -62,11 +62,6 @@
             return $approval;
         }
 
-        function SendConfig()
-        {
-            return $this->config;
-        }
-
     }
 
     class PayPalRedirect
