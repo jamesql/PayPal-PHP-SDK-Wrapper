@@ -63,9 +63,14 @@
             return $approval;
         }
 
-        function GetOrderDetails()
+        function GetOrderDetailsByObject(Order $ord)
         {
-            
+
+        }
+
+        function GetOrderDetailsById($orderid)
+        {
+
         }
 
     }
