@@ -7,6 +7,9 @@
 
 __Welcome to PayPal PHP SDK Wrapper__. This repository is a wrapper library for the PayPal PHP SDK.
 
+## SDK Wrapper Documentation
+* [Wrapper Wiki (Docs)](https://github.com/smitteh1/PayPal-PHP-SDK-Wrapper/wiki)
+
 ## Original SDK Documentation
 
 * [Original Library Docs](http://paypal.github.io/PayPal-PHP-SDK/)

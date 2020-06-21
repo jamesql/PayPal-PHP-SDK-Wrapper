@@ -39,7 +39,7 @@
 
         function CreateOrder($arrayOfItems)
         {
-            $this_order = new Order();
+            $this_order = new Order($arrayOfItems);
 
             return $this_order;
         }
