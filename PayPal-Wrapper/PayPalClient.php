@@ -119,17 +119,25 @@
         public $details;
         public $amount;
         public $payment;
+        public $transaction;
         public $itemsamount;
 
         function __construct($arrayOfItems)
         {
             $this->payer = new Payer();
-            $this->payer->setPaymentMethod("paypal");
-
             $this->itemlist = new ItemList();
+            $this->details = new Details();
+            $this->amount = new Amount();
+            $this->trasnaction = new Transaction();
+            $this->red = new RedirectUrls();
 
             $this->cart = $arrayOfItems;
             $this->itemsamount = 0.0;
+
+            $this->payer->setPaymentMethod("paypal");
+            // set redirect urls, check if null set to default in config
+
+            // Loop through cart and get all meta data
             foreach ($this->cart as $thisitem)
             {
                 $this->itemsamount += $thisitem->total;
@@ -138,9 +146,12 @@
                         ->setCurrency($glbconfig->currency)
                         ->setQuantity($thisitem->quantity)
                         ->setPrice($thisitem->amount);
-                        
+
                 $this->itemlist->addItem($itemobj);
             }
+
+            // Use meta data to fill out rest of the order information
+
         }
     }
 
