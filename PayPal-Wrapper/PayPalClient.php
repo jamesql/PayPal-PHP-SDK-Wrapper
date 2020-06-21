@@ -105,6 +105,12 @@
     class Order
     {
         private $cart;
+        private $payer;
+        private $red;
+        private $itemlist;
+        private $details;
+        private $amount;
+        private $payment;
 
         function __construct($arrayOfItems)
         {
