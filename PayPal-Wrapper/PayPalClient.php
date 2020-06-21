@@ -12,10 +12,6 @@
     use \PayPal\Api\RedirectUrls;
     use \PayPal\Api\Transaction;   
 
-    $configclass = new PayPalConfig();
-    $glbconfig = $configclass->returnConfig();
-    $defaultred = new PayPalRedirect($glbconfig->defaultRedirect, $glbconfig->defaultCancel);
-
     class PayPalConfig
     {	
     	private $config;
@@ -141,6 +137,7 @@
             $this->itemsamount = 0.0;
 
             // set redirect urls, check if null set to default in config
+            $this->red = new PayPalRedirect($this->config->defaultRedirect, $this->config->defaultCancel);
 
             $this->payer->setPaymentMethod("paypal");
             $this->payment->setIntent("order")
