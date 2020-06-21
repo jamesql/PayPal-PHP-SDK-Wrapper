@@ -134,7 +134,12 @@
             {
                 $this->itemsamount += $thisitem->total;
                 $itemobj = new Item();
-                
+                $itemobj->setName($thisitem->name)
+                        ->setCurrency($glbconfig->currency)
+                        ->setQuantity($thisitem->quantity)
+                        ->setPrice($thisitem->amount);
+                        
+                $this->itemlist->addItem($itemobj);
             }
         }
     }
