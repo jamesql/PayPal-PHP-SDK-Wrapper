@@ -119,6 +119,7 @@
         public $details;
         public $amount;
         public $payment;
+        public $itemsamount;
 
         function __construct($arrayOfItems)
         {
