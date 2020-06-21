@@ -3,5 +3,6 @@
     "clientsecret": "",
     "defaultRedirect":"",
     "defaultCancel":"",
-    "currency": "USD"
+    "currency": "USD",
+    "taxrate": 0
 }
