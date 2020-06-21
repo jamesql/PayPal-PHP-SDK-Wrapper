@@ -107,15 +107,15 @@
 
     class Order
     {
-        public $cart;
-        public $payer;
-        public $red;
-        public $itemlist;
-        public $details;
-        public $amount;
         public $payment;
-        public $transaction;
-        public $itemsamount;
+        private $cart;
+        private $payer;
+        private $red;
+        private $itemlist;
+        private $details;
+        private $amount;
+        private $transaction;
+        private $itemsamount;
         private $config;
 
         function __construct($arrayOfItems)
