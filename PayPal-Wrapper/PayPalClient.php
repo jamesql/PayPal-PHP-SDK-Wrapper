@@ -143,7 +143,8 @@
             $this->itemsamount = 0.0;
 
             // set redirect urls, check if null set to default in config
-            $this->red = new PayPalRedirect($this->config->defaultRedirect, $this->config->defaultCancel);
+            $this->red->setReturnUrl($this->config->defaultRedirect)
+                      ->setCancelUrl($this->config->defaultCancel);
 
             $this->payer->setPaymentMethod("paypal");
             $this->payment->setIntent("order")
