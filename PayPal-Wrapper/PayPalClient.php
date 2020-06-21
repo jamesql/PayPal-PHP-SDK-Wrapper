@@ -90,15 +90,17 @@
 
     class PayPalItem
     {
-        private $name;
-        private $quantity;
-        private $amount;
+        public $name;
+        public $quantity;
+        public $amount;
+        public $total;
 
         function __construct($itemName, $itemQuantity, $itemAmount)
         {
             $this->name = $itemName;
             $this->quantity = $itemQuantity;
             $this->amount = $itemAmount;
+            $this->total = $itemAmount * $itemQuantity;
         }
     }
 
@@ -116,7 +118,7 @@
         {
             $this->payer = new Payer();
             $this->payer->setPaymentMethod("paypal");
-            
+
             $this->cart = $arrayOfItems;
         }
     }
