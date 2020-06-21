@@ -126,7 +126,16 @@
             $this->payer = new Payer();
             $this->payer->setPaymentMethod("paypal");
 
+            $this->itemlist = new ItemList();
+
             $this->cart = $arrayOfItems;
+            $this->itemsamount = 0.0;
+            foreach ($this->cart as $thisitem)
+            {
+                $this->itemsamount += $thisitem->total;
+                $itemobj = new Item();
+                
+            }
         }
     }
 
