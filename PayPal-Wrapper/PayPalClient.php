@@ -78,6 +78,14 @@
             $this->return = $returnurl;
             $this->cancel = $cancelurl;
         }
+
+        function getRedirects()
+        {
+            $this_red = new RedirectUrls();
+            $this_red->setReturnUrl($this->return)
+                    ->setCancelUrl($this->cancel);
+            return $this_red;
+        }
     }
 
     class PayPalItem
