@@ -17,6 +17,7 @@ __Welcome to PayPal PHP SDK Wrapper__. This repository is a wrapper library for 
 * [PayPal Developer Docs](https://developer.paypal.com/docs/)
 
 ## Latest Updates
+- Initial Release (1.0.0)
 
 ## Prerequisites
 
