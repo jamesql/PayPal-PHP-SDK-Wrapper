@@ -12,6 +12,7 @@
     use \PayPal\Api\RedirectUrls;
     use \PayPal\Api\Transaction;   
 
+    // Rewrite this
     class PayPalConfig
     {	
     	private $config;
