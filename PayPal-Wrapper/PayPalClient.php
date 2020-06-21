@@ -114,6 +114,9 @@
 
         function __construct($arrayOfItems)
         {
+            $this->payer = new Payer();
+            $this->payer->setPaymentMethod("paypal");
+            
             $this->cart = $arrayOfItems;
         }
     }
