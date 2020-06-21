@@ -63,6 +63,11 @@
             return $approval;
         }
 
+        function GetOrderDetails()
+        {
+            
+        }
+
     }
 
     class PayPalRedirect
