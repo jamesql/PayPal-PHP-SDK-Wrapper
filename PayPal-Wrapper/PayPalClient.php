@@ -128,14 +128,19 @@
             $this->itemlist = new ItemList();
             $this->details = new Details();
             $this->amount = new Amount();
-            $this->trasnaction = new Transaction();
+            $this->transaction = new Transaction();
             $this->red = new RedirectUrls();
+            $this->payment = new Payment();
 
             $this->cart = $arrayOfItems;
             $this->itemsamount = 0.0;
 
-            $this->payer->setPaymentMethod("paypal");
             // set redirect urls, check if null set to default in config
+
+            $this->payer->setPaymentMethod("paypal");
+            $this->payment->setIntent("order")
+                          ->setPayer($this->payer)
+                          ->setRedirectUrls($this->red);
 
             // Loop through cart and get all meta data
             foreach ($this->cart as $thisitem)
@@ -151,7 +156,11 @@
             }
 
             // Use meta data to fill out rest of the order information
-
+            $this->details->setTax('0.00')
+                          ->setSubtotal(strval($this->itemsamount));
+            $this->amount->setCurrency($glbconfig->currency)
+                         ->setTotal(strval($this->itemsamount))
+                         ->setDetails($this->details);
         }
     }
 
