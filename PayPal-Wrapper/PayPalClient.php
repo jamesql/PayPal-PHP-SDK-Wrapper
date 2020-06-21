@@ -123,6 +123,7 @@
         private $transaction;
         private $itemsamount;
         private $config;
+        private $orderid;
 
         function __construct($arrayOfItems)
         {
@@ -140,6 +141,7 @@
 
             $this->cart = $arrayOfItems;
             $this->itemsamount = 0.0;
+            $this->orderid = uniqid();
 
             // set redirect urls, check if null set to default in config
             $this->red->setReturnUrl($this->config->defaultRedirect)
@@ -172,8 +174,13 @@
 
             $this->transaction->setAmount($this->amount)
                               ->setDescription("DESCRIPTION")
-                              ->setInvoiceNumber(uniqid());
+                              ->setInvoiceNumber($this->orderid);
             $this->payment->setTransactions(array($this->transaction));
+        }
+
+        function GetOrderId()
+        {
+            return $this->orderid;
         }
     }
 
