@@ -54,12 +54,18 @@
 
         function SendOrder(Order $ord, $redirect=false)
         {
+            try {
             $ord->payment->create($this->context);
             $approval = $ord->payment->getApprovalUrl();
 
             if ($redirect)
                 header("Location: " . $approval);
-
+            } catch (PayPal\Exception\PayPalConnectionException $ex)
+            {
+                echo $ex->getCode();
+                echo $ex->getData();
+                die($ex);
+            }
             return $approval;
         }
 
