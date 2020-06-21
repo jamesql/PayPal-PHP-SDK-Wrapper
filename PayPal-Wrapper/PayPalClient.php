@@ -56,7 +56,7 @@
         {
             try {
             $ord->payment->create($this->context);
-            $approval = $ord->payment->getApprovalUrl();
+            $approval = $ord->payment->getApprovalLink();
 
             if ($redirect)
                 header("Location: " . $approval);
