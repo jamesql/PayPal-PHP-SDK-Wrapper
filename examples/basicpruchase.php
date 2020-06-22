@@ -19,7 +19,7 @@
     <body style="text-align:center;">
         <h1 style="color:blue;"> PayPal SDK Wrapper Demo </h1>
         <form method="post">
-            <input type="submit" name="button" value="button" />
+            <input type="submit" name="button" value="Buy Apples" />
         </form>
     </body>
 </html>
