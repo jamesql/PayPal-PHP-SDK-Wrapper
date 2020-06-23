@@ -12,6 +12,18 @@
     use \PayPal\Api\RedirectUrls;
     use \PayPal\Api\Transaction;   
 
+    /*
+    TODO:
+    Write methods to get a order status / response from paypal via Order object ($this->orderid)
+    or a specific id from a database. 
+
+    - tax rate
+    - description
+    - finish transaction authorization ^^ 
+    
+    */
+
+
     // Rewrite this
     class PayPalConfig
     {	
@@ -57,6 +69,10 @@
         {
             $ord->payment->create($this->context);
             $approval = $ord->payment->getApprovalLink();
+
+            // attempt to get auth id from payment
+            $authid = $ord->payment->transactions[0];
+            $ord->SetAuthId($authid);
 
             if ($redirect)
                 header("Location: " . $approval);
@@ -124,6 +140,7 @@
         private $itemsamount;
         private $config;
         private $orderid;
+        private $authid;
 
         function __construct($arrayOfItems)
         {
@@ -139,6 +156,7 @@
             $this->red = new RedirectUrls();
             $this->payment = new Payment();
 
+            $this->authid = "";
             $this->cart = $arrayOfItems;
             $this->itemsamount = 0.0;
             $this->orderid = uniqid();
@@ -181,6 +199,16 @@
         function GetOrderId()
         {
             return $this->orderid;
+        }
+
+        function GetAuthId()
+        {
+            return $this->authid;
+        }
+
+        function SetAuthId($id)
+        {
+            $this->authid = $id;
         }
     }
 

@@ -9,5 +9,6 @@
     $order = $client->CreateOrder(array(new \PayPalWrapper\PayPalItem("Apple", 3, 5)));
     
     // Send the order to user, true is to automatically redirect, this function returns the url to send the user to.
-    $redirecturl = $client->SendOrder($order, true);
+    $redirecturl = $client->SendOrder($order, false);
+    echo $order->GetAuthId();
 ?>
